@@ -1,16 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="@layout/fragment_home"
+    android:background="@drawable/card_view_bg"
     android:orientation="horizontal">
-    <TextView
-        android:text="@string/leaflet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="16dp">
+        <!--
+        <TextView
+            android:id="@+id/txt_icon_medicine_item"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            tools:text="AS"
+            android:textColor="@color/white"
+            android:background="@drawable/circle"
+            android:gravity="center"
+            />
+        -->
+        <TextView
+            android:id="@+id/txt_name_medicine_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:layout_marginStart="16dp"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            tools:text="Namenamenema nema nema" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txt_quantity_medicine_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:layout_below="@id/txt_name_medicine_item"
+            android:layout_alignStart="@id/txt_name_medicine_item"
+            android:textColor="@color/black"
+            tools:text="Quantity: 999" />
+
+        <TextView
+            android:id="@+id/txt_unity_medicine_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_below="@id/txt_name_medicine_item"
+            android:layout_toEndOf="@+id/txt_quantity_medicine_item"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            tools:text="Unity Price: 999" />
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
