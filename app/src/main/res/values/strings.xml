@@ -17,5 +17,6 @@
     <string name="name">Name</string>
     <string name="leaflet">Leaflet</string>
     <string name="save">Save</string>
+    <string name="add_item">Add Item</string>
 
 </resources>
