@@ -47,6 +47,13 @@ public class MedicineRegisterFragment extends Fragment {
 
         });
 
+        binding.buttonMedicineRegisterSave.setOnClickListener(v -> {
+            medicineViewModel.onSaveNewMedicine();
+            Navigation.findNavController(container).navigate(R.id.action_medicine_register_to_nav_home);
+
+        });
+
+
 
         setupFieldsListeners();
         setupOnClickListener();
@@ -75,13 +82,16 @@ public class MedicineRegisterFragment extends Fragment {
         /*
         String leaflet = binding.inputMedicineRegisterLeafleft.getText().toString();
         String price = binding.inputMedicineRegisterPrice.toString();
-        */
+
         binding.buttonMedicineRegisterSave.setOnClickListener(v -> {
             System.out.println("aaaaaaaaaaaaaONCLICKaaaaaaaaaaaaaaaaaaaa"+name);
             Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
-            //medicineViewModel.onUserRequestAddMedicine(new Medicine(name, Double.parseDouble(price),leaflet));
+            //medicineViewModel.onSaveNewMedicine();
+
 
         });
+        */
+
 
     }
 

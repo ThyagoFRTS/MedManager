@@ -9,11 +9,14 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.medmanager.domain.MedicineRepository;
 import com.example.medmanager.models.Medicine;
+import com.example.medmanager.staticData.Data;
 
 import java.util.List;
 
 public class MedicineRegisterViewModel extends AndroidViewModel {
+    private MedicineRepository repository;
     /*
     private MutableLiveData<Medicine> _onSaveMedicine;
     public LiveData<Medicine> onSaveMedicine = _onSaveMedicine;
@@ -28,6 +31,7 @@ public class MedicineRegisterViewModel extends AndroidViewModel {
 
     public MedicineRegisterViewModel(@NonNull Application application) {
         super(application);
+        this.repository = new MedicineRepository(application);
 
     }
 
@@ -48,13 +52,15 @@ public class MedicineRegisterViewModel extends AndroidViewModel {
 
     public void onSaveNewMedicine(){
         if (!name.equals("") && !validity.equals("") && !quantity.equals("") && !unity_pice.equals("")){
-            _newMedicine.setValue(new Medicine("name","valid", 0, 0.));
+            //repository.insert(new Medicine(name,validity,Integer.parseInt(quantity),Double.parseDouble(unity_pice)));
+            //_newMedicine.setValue(new Medicine("name","valid", 0, 0.));
+            Data.addMedicine(9,"name","valid", 0, 0.);
         }
     }
 
 
     public void saveOnDataBase() {
-
+        //repository.insert();
     }
 
     public void onUserChangeName(String name) {
