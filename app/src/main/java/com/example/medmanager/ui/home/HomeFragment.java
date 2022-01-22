@@ -11,11 +11,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavHostController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medmanager.R;
 import com.example.medmanager.adapters.MedicineRecyclerAdapter;
 import com.example.medmanager.databinding.FragmentHomeBinding;
 import com.example.medmanager.models.Medicine;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -24,17 +28,17 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private List<Medicine> data;
     private MedicineRecyclerAdapter adapter;
+    private FloatingActionButton floatingButton;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        /*
-        homeViewModel.getMedicines().observe(getViewLifecycleOwner(), medicines -> {
-            data = medicines;
-            System.out.println("================jasjaijsiajsiajsiajisjaisjiajsiaji"+data.get(0).getName());
-        });*/
 
+        floatingButton = binding.fab;
+        floatingButton.setOnClickListener( l -> {
+            Navigation.findNavController(container).navigate(R.id.medicineRegisterFragment);
+        });
 
 
 
@@ -45,14 +49,14 @@ public class HomeFragment extends Fragment {
         //final TextView textView = binding.textHome;
         //homeViewModel.getText().observe(getViewLifecycleOwner(), s -> textView.setText(s));
 
-        //getAllMedicines();
+        loadMedicineList();
 
         View root = binding.getRoot();
         return root;
     }
 
-    public void getAllMedicines (){
-        homeViewModel.getMedicines().observe(getViewLifecycleOwner(), medicines -> {
+    public void loadMedicineList (){
+        homeViewModel.getData().observe(getViewLifecycleOwner(), medicines -> {
             adapter.setMedicineList(medicines);
         });
     }

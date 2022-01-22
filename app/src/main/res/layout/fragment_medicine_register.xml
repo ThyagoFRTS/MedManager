@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.medicineRegister.MedicineRegisterFragment">
 
 
@@ -11,35 +11,51 @@
         android:id="@+id/input_medicine_register_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
         android:ems="10"
         android:hint="@string/name"
-        android:inputType="textPersonName"
-        android:autofillHints="" />
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/input_medicine_register_price"
+        android:id="@+id/input_medicine_register_validity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:ems="10"
+        android:hint="@string/validity"
+        android:inputType="textPersonName"  />
+
+    <EditText
+        android:id="@+id/input_medicine_register_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:ems="10"
+        android:hint="@string/quantity"
+        android:inputType="numberSigned" />
+
+    <EditText
+        android:id="@+id/input_medicine_register_unity_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
         android:ems="10"
         android:hint="@string/price"
-        android:inputType="numberDecimal"
-        android:minHeight="48dp"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/input_medicine_register_leafleft"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:hint="@string/leaflet"
-        android:autofillHints="" />
+        android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/button_medicine_register_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
         android:text="@string/save" />
+
+    <Button
+        android:id="@+id/button_medicine_register_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="@string/cancel" />
 
 
 </LinearLayout>

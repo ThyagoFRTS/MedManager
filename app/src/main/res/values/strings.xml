@@ -18,5 +18,8 @@
     <string name="leaflet">Leaflet</string>
     <string name="save">Save</string>
     <string name="add_item">Add Item</string>
+    <string name="validity">Validity</string>
+    <string name="quantity">Quantity</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

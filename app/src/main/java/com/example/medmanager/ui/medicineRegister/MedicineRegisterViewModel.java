@@ -8,15 +8,21 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.medmanager.models.Medicine;
 
+import java.util.List;
+
 public class MedicineRegisterViewModel extends ViewModel {
     /*
     private MutableLiveData<Medicine> _onSaveMedicine;
     public LiveData<Medicine> onSaveMedicine = _onSaveMedicine;
     */
-
     private MutableLiveData<Medicine> _newMedicine;
+    private Medicine new_item;
 
-    private Medicine currentMedicine = new Medicine();
+    private String name;
+    private String validity;
+    private String quantity;
+    private String unity_pice;
+
     /*
     public LiveData<Medicine> getNewMedicine() {
         if (_newMedicine == null) {
@@ -30,13 +36,32 @@ public class MedicineRegisterViewModel extends ViewModel {
         _newMedicine.setValue(new Medicine("name", 0.,"leaflet"));
     }*/
 
-    public void onUserRequestAddMedicine(Medicine medicine){
-        setCurrentMedicine(medicine);
-        _newMedicine.setValue(new Medicine("name","valid", 0, 0.));
+
+
+    public void onSaveNewMedicine(){
+        if (!name.equals("") && !validity.equals("") && !quantity.equals("") && !unity_pice.equals("")){
+            _newMedicine.setValue(new Medicine("name","valid", 0, 0.));
+        }
     }
 
-    public void setCurrentMedicine(Medicine currentMedicine) {
-        this.currentMedicine = currentMedicine;
+
+    public void saveOnDataBase() {
+
     }
 
+    public void onUserChangeName(String name) {
+        this.name = name;
+    }
+
+    public void onUserChangeValidity(String validity) {
+        this.validity = validity;
+    }
+
+    public void onUserChangeQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public void onUserChangeUnityPrice(String unity_pice) {
+        this.unity_pice = unity_pice;
+    }
 }

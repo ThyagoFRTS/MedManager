@@ -8,32 +8,48 @@ import com.example.medmanager.models.Medicine;
 import com.example.medmanager.staticData.Data;
 
 import java.util.List;
-import java.util.Objects;
+
 
 public class HomeViewModel extends ViewModel {
 
-    final private MutableLiveData<String> mText;
     private MutableLiveData<List<Medicine>> data;
     //private List<Medicine> medicines;
 
     public HomeViewModel() {
-        mText = new MutableLiveData<>();
+
         //data = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        //mText.setValue("This is home fragment");
+
+        loadData();
 
     }
 
-    public LiveData<List<Medicine>> getMedicines() {
-        if (data == null) {
-            data = new MutableLiveData<>();
-            loadData();
-            System.out.println("====================asasas========="+ Objects.requireNonNull(data.getValue()).get(0).getName());
+    private void loadData() {
+        if (this.data == null) {
+            this.data = new MutableLiveData<>();
+            loadDBData();
+        }
+    }
 
+    public LiveData<List<Medicine>> getData() {
+        if (data == null) {
+
+            /*
+            System.out.println("==========chegouaqui");
+            data = new MutableLiveData<>();
+            loadDBData();
+            */
         }
         return data;
     }
 
-    private void loadData() {
+
+
+    private void loadDBData() {
         data.setValue(Data.getMedicines());
+    }
+
+    private void setData(List<Medicine> medicines) {
+        data.setValue(medicines);
     }
 }
