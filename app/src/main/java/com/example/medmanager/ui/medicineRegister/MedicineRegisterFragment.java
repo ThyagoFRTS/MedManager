@@ -44,7 +44,6 @@ public class MedicineRegisterFragment extends Fragment {
         if (result){
             System.out.println("==============================tem argumento"+ result.toString());
         }
-        System.out.println("==============================tem argumento"+ result.toString());
 
 
         binding.buttonMedicineRegisterCancel.setOnClickListener( l -> {

@@ -27,6 +27,7 @@ public class HomeViewModel extends AndroidViewModel {
         super(application);
         this.repository = new MedicineRepository(application);
         //data = _data;
+        data = repository.getAllMedicines();
         loadData();
 
     }
@@ -49,6 +50,9 @@ public class HomeViewModel extends AndroidViewModel {
         return _data;
     }
 
+    public LiveData<List<Medicine>> getAllMedicines() {
+        return this.data;
+    }
 
 
     private void loadDbData() {

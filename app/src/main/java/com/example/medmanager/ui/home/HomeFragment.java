@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,8 +19,11 @@ import com.example.medmanager.R;
 import com.example.medmanager.adapters.MedicineRecyclerAdapter;
 import com.example.medmanager.databinding.FragmentHomeBinding;
 import com.example.medmanager.databinding.MedicineItemBinding;
+import com.example.medmanager.models.Medicine;
 import com.example.medmanager.staticData.Data;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 
 public class HomeFragment extends Fragment {
@@ -54,7 +58,8 @@ public class HomeFragment extends Fragment {
     }
 
     public void loadMedicineList (){
-        homeViewModel.getData().observe(getViewLifecycleOwner(), medicines -> adapter.setMedicineList(medicines));
+        //homeViewModel.getData().observe(getViewLifecycleOwner(), medicines -> adapter.setMedicineList(medicines));
+        homeViewModel.getAllMedicines().observe(this.getViewLifecycleOwner(), medicines -> adapter.setMedicineList(medicines));
     }
 
 
