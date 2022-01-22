@@ -32,9 +32,6 @@ public class MedicineRegisterFragment extends Fragment {
 
     private MedicineRegisterViewModel medicineViewModel;
     private FragmentMedicineRegisterBinding binding;
-    private TextView txt_name;
-    private TextView txt_price;
-    private TextView txt_leafleft;
     private Button btn_save;
 
     private Medicine entry;
@@ -45,15 +42,12 @@ public class MedicineRegisterFragment extends Fragment {
         medicineViewModel = new ViewModelProvider(this).get(MedicineRegisterViewModel.class);
 
         binding.buttonMedicineRegisterCancel.setOnClickListener( l -> {
-            //Navigation.findNavController(container).navigate(R.id.medicineRegisterFragment);
+            Navigation.findNavController(container).popBackStack();
+            //Navigation.findNavController(container).navigate(R.id.action_medicine_register_to_nav_home);
+
         });
 
-        /*
-        txt_name = binding.inputMedicineRegisterName;
-        txt_price = binding.inputMedicineRegisterPrice;
-        txt_leafleft = binding.inputMedicineRegisterLeafleft;
-        btn_save = binding.buttonMedicineRegisterSave;
-        */
+
         setupFieldsListeners();
         setupOnClickListener();
         setupObservers();

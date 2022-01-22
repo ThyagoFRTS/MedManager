@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medmanager.databinding.MedicineItemBinding;
+import com.example.medmanager.db.DbRoomDatabase;
 import com.example.medmanager.models.Medicine;
 import com.example.medmanager.staticData.Data;
 
@@ -22,11 +23,13 @@ import java.util.Locale;
 
 
 public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecyclerAdapter.ViewHolder> implements Filterable {
+
     private List<Medicine> dataMedicineListFull;
     private List<Medicine> dataMedicineList;
-
+    private Context context;
 
     public MedicineRecyclerAdapter(Context context) {
+        this.context = context;
         //this.data = Data.getMedicines();
     }
 
@@ -48,19 +51,19 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
 
     @Override
     public int getItemCount() {
-        if (dataMedicineListFull == null){
+        if (dataMedicineList == null){
             return 0;
         } else {
-            return dataMedicineListFull.size();
+            return dataMedicineList.size();
         }
     }
-
+    /*
     public void refresh(List<Medicine> MedicineList) {
         notifyItemRangeRemoved(0, this.dataMedicineListFull.size());
         this.dataMedicineListFull.clear();
         this.dataMedicineListFull.addAll(MedicineList);
         notifyItemRangeInserted(0, this.dataMedicineListFull.size());
-    }
+    }*/
 
     public void setMedicineList(List<Medicine> data) {
         this.dataMedicineList = data;

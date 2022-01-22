@@ -1,55 +1,79 @@
 package com.example.medmanager.ui.home;
 
+import android.app.Application;
+import android.content.Context;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.medmanager.db.DbRoomDatabase;
+import com.example.medmanager.domain.MedicineRepository;
 import com.example.medmanager.models.Medicine;
 import com.example.medmanager.staticData.Data;
 
 import java.util.List;
 
 
-public class HomeViewModel extends ViewModel {
+public class HomeViewModel extends AndroidViewModel {
+    private MedicineRepository repository;
+    private MutableLiveData<List<Medicine>> _data;
+    LiveData<List<Medicine>> data;
+    private Context context;
 
-    private MutableLiveData<List<Medicine>> data;
-    //private List<Medicine> medicines;
-
-    public HomeViewModel() {
-
-        //data = new MutableLiveData<>();
-        //mText.setValue("This is home fragment");
-
+    public HomeViewModel(@NonNull Application application) {
+        super(application);
+        //this.repository = new MedicineRepository(application);
+        data = _data;
         loadData();
 
     }
 
     private void loadData() {
-        if (this.data == null) {
-            this.data = new MutableLiveData<>();
+        if (this._data == null) {
+            this._data = new MutableLiveData<>();
             loadDBData();
         }
     }
 
     public LiveData<List<Medicine>> getData() {
-        if (data == null) {
-
+        if (_data == null) {
             /*
             System.out.println("==========chegouaqui");
             data = new MutableLiveData<>();
             loadDBData();
             */
         }
-        return data;
+        return _data;
     }
 
 
 
     private void loadDBData() {
-        data.setValue(Data.getMedicines());
+        //DbRoomDatabase db = DbRoomDatabase.getDatabase(context);
+        //data = db.medicineDao().getAllMedicines();
+        _data.setValue(Data.getMedicines());
     }
 
-    private void setData(List<Medicine> medicines) {
-        data.setValue(medicines);
+    public void setData(List<Medicine> medicines) {
+        _data.setValue(medicines);
     }
+    /*
+    public void insertMedicine(Medicine medicine) {
+        repository.insert(medicine);
+    }
+
+    public void updateMedicine(Medicine medicine) {
+        repository.update(medicine);
+    }
+
+    public void deleteMedicine(Medicine medicine){
+        repository.delete(medicine);
+    }
+
+    public void deleteAll (){
+        repository.deleteAll();
+    }*/
 }

@@ -1,7 +1,10 @@
 package com.example.medmanager.ui.medicineRegister;
 
+import android.app.Application;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -10,7 +13,7 @@ import com.example.medmanager.models.Medicine;
 
 import java.util.List;
 
-public class MedicineRegisterViewModel extends ViewModel {
+public class MedicineRegisterViewModel extends AndroidViewModel {
     /*
     private MutableLiveData<Medicine> _onSaveMedicine;
     public LiveData<Medicine> onSaveMedicine = _onSaveMedicine;
@@ -22,6 +25,11 @@ public class MedicineRegisterViewModel extends ViewModel {
     private String validity;
     private String quantity;
     private String unity_pice;
+
+    public MedicineRegisterViewModel(@NonNull Application application) {
+        super(application);
+
+    }
 
     /*
     public LiveData<Medicine> getNewMedicine() {
