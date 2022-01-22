@@ -9,12 +9,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medmanager.R;
 import com.example.medmanager.databinding.MedicineItemBinding;
 import com.example.medmanager.db.DbRoomDatabase;
 import com.example.medmanager.models.Medicine;
 import com.example.medmanager.staticData.Data;
+import com.example.medmanager.ui.home.HomeFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,6 +30,7 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
     private List<Medicine> dataMedicineListFull;
     private List<Medicine> dataMedicineList;
     private Context context;
+    private OnItemClickListener onItemClickListener;
 
     public MedicineRecyclerAdapter(Context context) {
         this.context = context;
@@ -39,6 +43,13 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         MedicineItemBinding itemBinding = MedicineItemBinding.inflate(layoutInflater, parent, false);
+
+        itemBinding.btnEditMedicineItem.setOnClickListener(l -> {
+            HomeFragmentDirections.ActionHomeToMedicineRegister action = HomeFragmentDirections.actionHomeToMedicineRegister();
+            action.setIsNewMedicine(true);
+            Navigation.findNavController(parent).navigate(action);
+        });
+
         return new ViewHolder(itemBinding);
 
     }
@@ -129,6 +140,15 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
             quantity.setText(String.format("Quantity: %d", medicine.getQuantity()));
             price.setText(String.format("Unity Price: %s", medicine.getUnityPrice()));
         }
+
+    }
+
+    public void setOnItemClickListener (OnItemClickListener listener){
+        this.onItemClickListener = listener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(Medicine medicineItem);
 
     }
 }

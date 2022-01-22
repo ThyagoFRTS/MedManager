@@ -81,6 +81,6 @@ public class MedicineRepository {
         new DeleteAllAsyncMedicine(medicineDao).execute();
     }
 
-    LiveData<List<Medicine>> getAllMedicines () {return allMedicines; }
+    public LiveData<List<Medicine>> getAllMedicines () {return allMedicines; }
 
 }

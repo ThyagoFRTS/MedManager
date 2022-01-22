@@ -23,5 +23,9 @@
         <action
             android:id="@+id/action_medicine_register_to_nav_home"
             app:destination="@id/nav_home" />
+        <argument
+            android:name="isNewMedicine"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
 </navigation>

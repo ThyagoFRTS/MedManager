@@ -32,7 +32,6 @@ public class MedicineRegisterFragment extends Fragment {
 
     private MedicineRegisterViewModel medicineViewModel;
     private FragmentMedicineRegisterBinding binding;
-    private Button btn_save;
 
     private Medicine entry;
 
@@ -40,6 +39,13 @@ public class MedicineRegisterFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentMedicineRegisterBinding.inflate(inflater, container, false);
         medicineViewModel = new ViewModelProvider(this).get(MedicineRegisterViewModel.class);
+
+        Boolean result = MedicineRegisterFragmentArgs.fromBundle(getArguments()).getIsNewMedicine();
+        if (result){
+            System.out.println("==============================tem argumento"+ result.toString());
+        }
+        System.out.println("==============================tem argumento"+ result.toString());
+
 
         binding.buttonMedicineRegisterCancel.setOnClickListener( l -> {
             Navigation.findNavController(container).popBackStack();

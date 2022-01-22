@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.medmanager.R;
 import com.example.medmanager.adapters.MedicineRecyclerAdapter;
 import com.example.medmanager.databinding.FragmentHomeBinding;
+import com.example.medmanager.databinding.MedicineItemBinding;
 import com.example.medmanager.staticData.Data;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -32,10 +36,11 @@ public class HomeFragment extends Fragment {
         floatingButton.setOnClickListener(l -> Navigation.findNavController(container).navigate(R.id.nav_medicine_register));
 
 
-
         RecyclerView recyclerView = binding.recyclerViewMedicine;
         adapter = new MedicineRecyclerAdapter(getContext());
         recyclerView.setAdapter(adapter);
+
+
 
         //final TextView textView = binding.textHome;
         //homeViewModel.getText().observe(getViewLifecycleOwner(), s -> textView.setText(s));
@@ -51,6 +56,7 @@ public class HomeFragment extends Fragment {
     public void loadMedicineList (){
         homeViewModel.getData().observe(getViewLifecycleOwner(), medicines -> adapter.setMedicineList(medicines));
     }
+
 
     @Override
     public void onDestroyView() {

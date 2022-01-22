@@ -25,8 +25,8 @@ public class HomeViewModel extends AndroidViewModel {
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
-        //this.repository = new MedicineRepository(application);
-        data = _data;
+        this.repository = new MedicineRepository(application);
+        //data = _data;
         loadData();
 
     }
@@ -34,7 +34,7 @@ public class HomeViewModel extends AndroidViewModel {
     private void loadData() {
         if (this._data == null) {
             this._data = new MutableLiveData<>();
-            loadDBData();
+            loadDbData();
         }
     }
 
@@ -51,15 +51,17 @@ public class HomeViewModel extends AndroidViewModel {
 
 
 
-    private void loadDBData() {
+    private void loadDbData() {
         //DbRoomDatabase db = DbRoomDatabase.getDatabase(context);
         //data = db.medicineDao().getAllMedicines();
+        //_data = (MutableLiveData<List<Medicine>>) this.repository.getAllMedicines();
         _data.setValue(Data.getMedicines());
     }
 
     public void setData(List<Medicine> medicines) {
         _data.setValue(medicines);
     }
+
     /*
     public void insertMedicine(Medicine medicine) {
         repository.insert(medicine);
