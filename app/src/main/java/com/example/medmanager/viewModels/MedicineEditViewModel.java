@@ -13,13 +13,10 @@ import com.example.medmanager.models.Medicine;
 
 public class MedicineEditViewModel extends AndroidViewModel {
     private MedicineRepository repository;
-    private MutableLiveData<Medicine> entry;
-    private Medicine medicineToEdit;
     private String name;
     private String validity;
     private String quantity;
     private String unity_price;
-    private int itemId;
 
     public MedicineEditViewModel(@NonNull Application application) {
         super(application);
@@ -27,32 +24,39 @@ public class MedicineEditViewModel extends AndroidViewModel {
 
     }
 
-    public void setMedicineToEdit(Medicine currentMedicine){
-        this.medicineToEdit = currentMedicine;
+
+    public void updateOnDataBase(Medicine currentItem){
+        System.out.println("==========="+this.quantity);
+        currentItem.setName(this.name);
+        currentItem.setValidity(this.validity);
+        currentItem.setQuantity(Integer.parseInt(this.quantity));
+        currentItem.setUnityPrice(Double.parseDouble(this.unity_price));
+        System.out.println("======================="+currentItem.toString());
+        this.repository.update(currentItem);
     }
-
-
-
-    public void updateItem(Medicine item){
-        this.repository.update(item);
-    }
-
 
 
     public void onUserChangeName(String name) {
-        System.out.println("=============diji"+name);
-        this.entry.getValue().setName(name);
+        this.name = name;
     }
 
     public void onUserChangeValidity(String validity) {
-        this.entry.getValue().setValidity(validity);
+        this.validity = validity;
     }
 
     public void onUserChangeQuantity(String quantity) {
-        this.entry.getValue().setQuantity(Integer.parseInt(quantity));
+        this.quantity = quantity;
     }
 
     public void onUserChangeUnityPrice(String unity_price) {
-        this.entry.getValue().setUnityPrice(Double.parseDouble(unity_price));
+        this.unity_price = unity_price;
+    }
+
+    public void setCurrentItemParams(Medicine currentItem) {
+        this.name = currentItem.getName();
+        this.validity = currentItem.getValidity();
+        this.quantity = Integer.toString(currentItem.getQuantity());
+        this.unity_price = Double.toString(currentItem.getUnityPrice());
+
     }
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -35,14 +36,21 @@ public class MedicineEditFragment extends Fragment {
         binding = FragmentMedicineEditBinding.inflate(inflater, container, false);
         editViewModel = new ViewModelProvider(this).get(MedicineEditViewModel.class);
 
+
+
         currentItem = MedicineEditFragmentArgs.fromBundle(getArguments()).getCurrentMedicine();
+        editViewModel.setCurrentItemParams(currentItem);
+
+        binding.buttonMedicineEditCancel.setOnClickListener( l -> {
+            Navigation.findNavController(container).popBackStack();
+        });
+
+        binding.buttonMedicineEditSave.setOnClickListener( l -> {
+            editViewModel.updateOnDataBase(currentItem);
+            Navigation.findNavController(container).navigate(R.id.action_nav_medicine_edit_to_nav_home);
+        });
 
         displayCurrentItemValuesOnScreem();
-
-        if (currentItem.getName() != ""){
-            System.out.println("==================="+currentItem.toString());
-        }
-
         setupFieldsListeners();
 
         View root = binding.getRoot();

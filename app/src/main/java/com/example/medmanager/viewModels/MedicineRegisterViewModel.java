@@ -25,18 +25,9 @@ public class MedicineRegisterViewModel extends AndroidViewModel {
 
     public void onSaveNewMedicine(){
         if (!name.equals("") && !validity.equals("") && !quantity.equals("") && !unity_price.equals("")){
-            /*
-            //repository.insert(new Medicine(name,validity,Integer.parseInt(quantity),Double.parseDouble(unity_price)));
-            //_newMedicine.setValue(new Medicine("name","valid", 0, 0.));
-            //Data.addMedicine(9,"name","valid", 0, 0.);
-            */
-
             saveOnDataBase();
-
         }
     }
-
-
 
 
     public void saveOnDataBase() {
