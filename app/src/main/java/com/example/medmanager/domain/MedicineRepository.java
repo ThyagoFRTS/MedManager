@@ -2,31 +2,26 @@ package com.example.medmanager.domain;
 
 import android.app.Application;
 import android.os.AsyncTask;
-
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.medmanager.db.DbRoomDatabase;
 import com.example.medmanager.db.MedicineDao;
 import com.example.medmanager.models.Medicine;
-
 import java.util.List;
 
 
 
 public class MedicineRepository {
-    private DbRoomDatabase dbRoomDatabase;
-    private MedicineDao medicineDao;
-    private LiveData<List<Medicine>> allMedicines;
+    private final MedicineDao medicineDao;
+    private final LiveData<List<Medicine>> allMedicines;
 
     public  MedicineRepository (Application application){
-        dbRoomDatabase = DbRoomDatabase.getDatabase(application);
+        DbRoomDatabase dbRoomDatabase = DbRoomDatabase.getDatabase(application);
         medicineDao = dbRoomDatabase.medicineDao();
         allMedicines = medicineDao.getAllMedicines();
     }
 
     private static class InsertAsyncMedicine extends AsyncTask<Medicine, Void, Void> {
-        private MedicineDao medicineDao;
+        private final MedicineDao medicineDao;
         InsertAsyncMedicine(MedicineDao dao){ this.medicineDao = dao; }
         @Override
         protected Void doInBackground(final Medicine... medicines) {
@@ -36,7 +31,7 @@ public class MedicineRepository {
     }
 
     private static class UpdateAsyncMedicine extends AsyncTask<Medicine, Void, Void> {
-        private MedicineDao medicineDao;
+        private final MedicineDao medicineDao;
         UpdateAsyncMedicine(MedicineDao dao){ this.medicineDao = dao; }
         @Override
         protected Void doInBackground(final Medicine... medicines) {
@@ -46,7 +41,7 @@ public class MedicineRepository {
     }
 
     private static class DeleteAsyncMedicine extends AsyncTask<Medicine, Void, Void> {
-        private MedicineDao medicineDao;
+        private final MedicineDao medicineDao;
         DeleteAsyncMedicine(MedicineDao dao){ this.medicineDao = dao; }
         @Override
         protected Void doInBackground(final Medicine... medicines) {
@@ -56,7 +51,7 @@ public class MedicineRepository {
     }
 
     private static class DeleteAllAsyncMedicine extends AsyncTask<Void, Void, Void> {
-        private MedicineDao medicineDao;
+        private final MedicineDao medicineDao;
         DeleteAllAsyncMedicine(MedicineDao dao){ this.medicineDao = dao; }
         @Override
         protected Void doInBackground(Void... voids) {

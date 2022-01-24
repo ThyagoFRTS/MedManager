@@ -1,25 +1,18 @@
 package com.example.medmanager.ui.medicineRegister;
 
 import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.medmanager.R;
-
-
 import com.example.medmanager.databinding.FragmentMedicineRegisterBinding;
-import com.example.medmanager.models.Medicine;
 import com.example.medmanager.viewModels.MedicineRegisterViewModel;
 
 
@@ -28,32 +21,25 @@ public class MedicineRegisterFragment extends Fragment {
     private MedicineRegisterViewModel medicineViewModel;
     private FragmentMedicineRegisterBinding binding;
 
-
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentMedicineRegisterBinding.inflate(inflater, container, false);
         medicineViewModel = new ViewModelProvider(this).get(MedicineRegisterViewModel.class);
 
-
         binding.buttonMedicineRegisterCancel.setOnClickListener( l -> {
+            assert container != null;
             Navigation.findNavController(container).popBackStack();
-            //Navigation.findNavController(container).navigate(R.id.action_medicine_register_to_nav_home);
-
         });
 
         binding.buttonMedicineRegisterSave.setOnClickListener(v -> {
             medicineViewModel.onSaveNewMedicine();
+            assert container != null;
             Navigation.findNavController(container).navigate(R.id.action_medicine_register_to_nav_home);
-
         });
-
-
 
         setupFieldsListeners();
 
-        View root = binding.getRoot();
-        return root;
+        return binding.getRoot();
     }
 
 

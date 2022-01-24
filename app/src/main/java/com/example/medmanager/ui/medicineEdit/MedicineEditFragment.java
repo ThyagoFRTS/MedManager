@@ -27,10 +27,6 @@ public class MedicineEditFragment extends Fragment {
     private Medicine currentItem;
 
 
-    public static MedicineEditFragment newInstance() {
-        return new MedicineEditFragment();
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentMedicineEditBinding.inflate(inflater, container, false);
@@ -42,25 +38,26 @@ public class MedicineEditFragment extends Fragment {
         editViewModel.setCurrentItemParams(currentItem);
 
         binding.buttonMedicineEditCancel.setOnClickListener( l -> {
+            assert container != null;
             Navigation.findNavController(container).popBackStack();
         });
 
         binding.buttonMedicineEditSave.setOnClickListener( l -> {
             editViewModel.updateOnDataBase(currentItem);
+            assert container != null;
             Navigation.findNavController(container).navigate(R.id.action_nav_medicine_edit_to_nav_home);
         });
 
-        displayCurrentItemValuesOnScreem();
+        displayCurrentItemValuesOnScreen();
         setupFieldsListeners();
 
-        View root = binding.getRoot();
-        return root;
+        return binding.getRoot();
     }
 
-    private void displayCurrentItemValuesOnScreem(){
+    private void displayCurrentItemValuesOnScreen(){
         binding.inputMedicineEditName.setText(currentItem.getName());
-        binding.inputMedicineEditQuantity.setText(Integer.toString(currentItem.getQuantity()));
-        binding.inputMedicineEditUnityPrice.setText(currentItem.getUnityPrice().toString());
+        binding.inputMedicineEditQuantity.setText(String.format(Integer.toString(currentItem.getQuantity())));
+        binding.inputMedicineEditUnityPrice.setText(String.format(currentItem.getUnityPrice().toString()));
         binding.inputMedicineEditValidity.setText(currentItem.getValidity());
     }
 

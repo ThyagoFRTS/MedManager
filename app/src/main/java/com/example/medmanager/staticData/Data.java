@@ -2,12 +2,12 @@ package com.example.medmanager.staticData;
 
 import com.example.medmanager.models.Medicine;
 import com.example.medmanager.models.User;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
-    public static List<Medicine> medicines = new ArrayList<Medicine>();
+    // this class was utilized to populate locally data
+    public static List<Medicine> medicines = new ArrayList<>();
     public static List<User> users;
 
     public static User getUserById(int id){

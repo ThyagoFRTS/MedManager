@@ -24,12 +24,9 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
 
     private List<Medicine> dataMedicineListFull;
     private List<Medicine> dataMedicineList;
-    private Context context;
-    private static OnItemClickListener onItemClickListener;
 
 
     public MedicineRecyclerAdapter(Context context) {
-        this.context = context;
     }
 
 
@@ -39,15 +36,7 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         MedicineItemBinding itemBinding = MedicineItemBinding.inflate(layoutInflater, parent, false);
 
-        /*
-        itemBinding.btnEditMedicineItem.setOnClickListener(l -> {
-            HomeFragmentDirections.ActionHomeToMedicineRegister action = HomeFragmentDirections.actionHomeToMedicineRegister();
-            action.setIsNewMedicine(true);
-            Navigation.findNavController(parent).navigate(action);
-        });*/
-
         return new ViewHolder(itemBinding);
-
     }
 
     @Override
@@ -138,13 +127,8 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
 
         public void sendCurrentMedicine(Medicine current){
             edit.setOnClickListener(l -> {
-                HomeFragmentDirections.ActionNavHomeToMedicineEditFragment action = HomeFragmentDirections.actionNavHomeToMedicineEditFragment(current);
-
-                //HomeFragmentDirections.ActionNavHomeToMedicineEditFragment action;
-                //action = HomeFragmentDirections.actionNavHomeToMedicineEditFragment();
-                //HomeFragmentDirections.ActionHomeToMedicineRegister action = HomeFragmentDirections.actionHomeToMedicineRegister();
-                //action.setMedicineId(item.getId());
-                //onItemClickListener.onItemClick(getItem());
+                HomeFragmentDirections.ActionNavHomeToMedicineEditFragment action;
+                action = HomeFragmentDirections.actionNavHomeToMedicineEditFragment(current);
                 Navigation.findNavController(binding.getRoot()).navigate(action);
             });
         }
@@ -159,12 +143,4 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
 
     }
 
-    public void setOnItemClickListener (OnItemClickListener listener){
-        this.onItemClickListener = listener;
-    }
-
-    public interface OnItemClickListener{
-        void onItemClick(Medicine medicineItem);
-
-    }
 }

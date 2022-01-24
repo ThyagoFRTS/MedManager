@@ -1,16 +1,12 @@
 package com.example.medmanager.db;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-
 import com.example.medmanager.models.Medicine;
-import com.example.medmanager.models.User;
-
 import java.util.List;
 
 @Dao

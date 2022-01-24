@@ -19,7 +19,7 @@ public  abstract class DbRoomDatabase extends RoomDatabase {
     public abstract UserDao userDao();
 
 
-    private static RoomDatabase.Callback databaseCallBack = new RoomDatabase.Callback(){
+    private static final RoomDatabase.Callback databaseCallBack = new RoomDatabase.Callback(){
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db){
             super.onOpen(db);

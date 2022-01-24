@@ -2,15 +2,12 @@ package com.example.medmanager.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import java.io.Serializable;
 
 
 @Entity(tableName = "medicines")
@@ -20,7 +17,7 @@ public class Medicine implements Parcelable {
     @ColumnInfo(name = "medicineId")
     private int id;
     @NonNull
-    private String name;
+    private String name = "medicine";
 
     private String validity;
 
@@ -49,6 +46,7 @@ public class Medicine implements Parcelable {
 
     }
 
+    @Ignore
     @Override
     public String toString() {
         return "Medicine{" +
