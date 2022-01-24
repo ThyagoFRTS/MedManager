@@ -13,7 +13,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medmanager.databinding.MedicineItemBinding;
+import com.example.medmanager.db.DbRoomDatabase;
 import com.example.medmanager.models.Medicine;
+import com.example.medmanager.repository.MedicineRepository;
 import com.example.medmanager.ui.home.HomeFragmentDirections;
 
 import java.util.ArrayList;
@@ -24,9 +26,11 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
 
     private List<Medicine> dataMedicineListFull;
     private List<Medicine> dataMedicineList;
+    private MedicineRepository repository;
 
 
     public MedicineRecyclerAdapter(Context context) {
+
     }
 
 
@@ -43,7 +47,6 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Medicine med = dataMedicineList.get(position);
         holder.sendCurrentMedicine(med);
-        //holder.setItem(med);
         holder.bind(med);
     }
 
@@ -107,7 +110,6 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
         private final TextView price;
         private final TextView quantity;
         private final ImageButton edit;
-        private final ImageButton delete;
         private Medicine item;
 
         MedicineItemBinding binding;
@@ -119,11 +121,9 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
             price = binding.txtUnityMedicineItem;
             quantity = binding.txtQuantityMedicineItem;
             edit = binding.btnEditMedicineItem;
-            delete = binding.btnDeleteMedicineItem;
-
-
 
         }
+
 
         public void sendCurrentMedicine(Medicine current){
             edit.setOnClickListener(l -> {
@@ -138,8 +138,6 @@ public class MedicineRecyclerAdapter extends RecyclerView.Adapter<MedicineRecycl
             quantity.setText(String.format("Quantity: %d", medicine.getQuantity()));
             price.setText(String.format("Unity Price: %s", medicine.getUnityPrice()));
         }
-
-
 
     }
 

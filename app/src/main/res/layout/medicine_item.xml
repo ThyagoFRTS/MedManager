@@ -63,30 +63,20 @@
             android:textSize="16sp"
             tools:text="Unity Price: 999" />
 
+
+
         <ImageButton
-            android:id="@+id/btn_delete_medicine_item"
+            android:id="@+id/btn_edit_medicine_item"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:layout_marginVertical="8dp"
             android:layout_marginEnd="8dp"
             android:background="@color/onSecondaryDark"
-            android:contentDescription="delete item"
             android:gravity="center"
-            android:src="@drawable/ic_baseline_restore_from_trash_24"
-            app:tint="@color/white" />
-
-        <ImageButton
-            android:id="@+id/btn_edit_medicine_item"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginVertical="8dp"
-            android:layout_marginEnd="9dp"
-            android:layout_toStartOf="@+id/btn_delete_medicine_item"
-            android:background="@color/onSecondaryDark"
+            android:contentDescription="edit item"
             android:src="@drawable/ic_baseline_edit_24"
-            app:tint="@color/white"
-            android:contentDescription="edit item" />
+            app:tint="@color/white" />
 
 
     </RelativeLayout>

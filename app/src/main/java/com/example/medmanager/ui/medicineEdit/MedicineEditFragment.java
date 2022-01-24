@@ -48,6 +48,12 @@ public class MedicineEditFragment extends Fragment {
             Navigation.findNavController(container).navigate(R.id.action_nav_medicine_edit_to_nav_home);
         });
 
+        binding.buttonMedicineEditDelete.setOnClickListener( l -> {
+            editViewModel.deleteOnDataBase(currentItem);
+            assert container != null;
+            Navigation.findNavController(container).navigate(R.id.action_nav_medicine_edit_to_nav_home);
+        });
+
         displayCurrentItemValuesOnScreen();
         setupFieldsListeners();
 

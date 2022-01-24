@@ -3,7 +3,7 @@ package com.example.medmanager.viewModels;
 import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import com.example.medmanager.domain.MedicineRepository;
+import com.example.medmanager.repository.MedicineRepository;
 import com.example.medmanager.models.Medicine;
 
 public class MedicineRegisterViewModel extends AndroidViewModel {

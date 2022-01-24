@@ -1,4 +1,4 @@
-package com.example.medmanager.domain;
+package com.example.medmanager.repository;
 
 import android.app.Application;
 import android.os.AsyncTask;

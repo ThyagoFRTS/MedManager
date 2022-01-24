@@ -4,7 +4,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import com.example.medmanager.domain.MedicineRepository;
+import com.example.medmanager.repository.MedicineRepository;
 import com.example.medmanager.models.Medicine;
 import java.util.List;
 
