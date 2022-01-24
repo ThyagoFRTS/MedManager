@@ -11,7 +11,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_medicine_register">Add Medicine</string>
-
+    <string name="menu_medicine_edit">Edit Medicine</string>
 
     <string name="price">Price</string>
     <string name="name">Name</string>

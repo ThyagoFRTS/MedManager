@@ -9,6 +9,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.medmanager.models.Medicine;
+import com.example.medmanager.models.User;
 
 import java.util.List;
 
@@ -19,6 +20,9 @@ public interface MedicineDao {
 
     @Query("SELECT * FROM medicines WHERE name LIKE :search")
     LiveData<List<Medicine>> findMedicinesByPattern(String search);
+
+    @Query("SELECT * FROM medicines WHERE medicineId = :mid")
+    Medicine getMedicineById(int mid);
 
     @Insert
     void insertMedicine(Medicine medicine);

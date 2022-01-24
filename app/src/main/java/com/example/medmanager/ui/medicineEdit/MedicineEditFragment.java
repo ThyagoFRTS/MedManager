@@ -1,4 +1,4 @@
-package com.example.medmanager.ui.medicineRegister;
+package com.example.medmanager.ui.medicineEdit;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,39 +15,33 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.medmanager.R;
-
-
-import com.example.medmanager.databinding.FragmentMedicineRegisterBinding;
+import com.example.medmanager.databinding.FragmentMedicineEditBinding;
 import com.example.medmanager.models.Medicine;
-import com.example.medmanager.viewModels.MedicineRegisterViewModel;
+import com.example.medmanager.viewModels.MedicineEditViewModel;
+
+public class MedicineEditFragment extends Fragment {
+
+    private MedicineEditViewModel editViewModel;
+    private FragmentMedicineEditBinding binding;
+    private Medicine currentItem;
 
 
-public class MedicineRegisterFragment extends Fragment {
-
-    private MedicineRegisterViewModel medicineViewModel;
-    private FragmentMedicineRegisterBinding binding;
-
-
+    public static MedicineEditFragment newInstance() {
+        return new MedicineEditFragment();
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentMedicineRegisterBinding.inflate(inflater, container, false);
-        medicineViewModel = new ViewModelProvider(this).get(MedicineRegisterViewModel.class);
+        binding = FragmentMedicineEditBinding.inflate(inflater, container, false);
+        editViewModel = new ViewModelProvider(this).get(MedicineEditViewModel.class);
 
+        currentItem = MedicineEditFragmentArgs.fromBundle(getArguments()).getCurrentMedicine();
 
-        binding.buttonMedicineRegisterCancel.setOnClickListener( l -> {
-            Navigation.findNavController(container).popBackStack();
-            //Navigation.findNavController(container).navigate(R.id.action_medicine_register_to_nav_home);
+        displayCurrentItemValuesOnScreem();
 
-        });
-
-        binding.buttonMedicineRegisterSave.setOnClickListener(v -> {
-            medicineViewModel.onSaveNewMedicine();
-            Navigation.findNavController(container).navigate(R.id.action_medicine_register_to_nav_home);
-
-        });
-
-
+        if (currentItem.getName() != ""){
+            System.out.println("==================="+currentItem.toString());
+        }
 
         setupFieldsListeners();
 
@@ -56,6 +49,12 @@ public class MedicineRegisterFragment extends Fragment {
         return root;
     }
 
+    private void displayCurrentItemValuesOnScreem(){
+        binding.inputMedicineEditName.setText(currentItem.getName());
+        binding.inputMedicineEditQuantity.setText(Integer.toString(currentItem.getQuantity()));
+        binding.inputMedicineEditUnityPrice.setText(currentItem.getUnityPrice().toString());
+        binding.inputMedicineEditValidity.setText(currentItem.getValidity());
+    }
 
     private void setupFieldsListeners() {
         setupNameListener();
@@ -65,12 +64,12 @@ public class MedicineRegisterFragment extends Fragment {
     }
 
     private void setupNameListener(){
-        binding.inputMedicineRegisterName.addTextChangedListener(new TextWatcher() {
+        binding.inputMedicineEditName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                medicineViewModel.onUserChangeName(s.toString());
+                editViewModel.onUserChangeName(s.toString());
             }
             @Override
             public void afterTextChanged(Editable s) { }
@@ -78,12 +77,12 @@ public class MedicineRegisterFragment extends Fragment {
     }
 
     private void setupQuantityListener(){
-        binding.inputMedicineRegisterQuantity.addTextChangedListener(new TextWatcher() {
+        binding.inputMedicineEditQuantity.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                medicineViewModel.onUserChangeQuantity(s.toString());
+                editViewModel.onUserChangeQuantity(s.toString());
             }
             @Override
             public void afterTextChanged(Editable s) { }
@@ -91,12 +90,12 @@ public class MedicineRegisterFragment extends Fragment {
     }
 
     private void setupValidityListener(){
-        binding.inputMedicineRegisterValidity.addTextChangedListener(new TextWatcher() {
+        binding.inputMedicineEditValidity.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                medicineViewModel.onUserChangeValidity(s.toString());
+                editViewModel.onUserChangeValidity(s.toString());
             }
             @Override
             public void afterTextChanged(Editable s) { }
@@ -104,19 +103,16 @@ public class MedicineRegisterFragment extends Fragment {
     }
 
     private void setupPriceListener(){
-        binding.inputMedicineRegisterUnityPrice.addTextChangedListener(new TextWatcher() {
+        binding.inputMedicineEditUnityPrice.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                medicineViewModel.onUserChangeUnityPrice(s.toString());
+                editViewModel.onUserChangeUnityPrice(s.toString());
             }
             @Override
             public void afterTextChanged(Editable s) { }
         });
     }
-
-
-
 
 }

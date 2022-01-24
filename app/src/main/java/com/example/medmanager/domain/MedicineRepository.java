@@ -77,10 +77,15 @@ public class MedicineRepository {
         new DeleteAsyncMedicine(medicineDao).execute(medicine);
     }
 
+    public LiveData<List<Medicine>> getAllMedicines () {return allMedicines; }
+
     public void deleteAll(){
         new DeleteAllAsyncMedicine(medicineDao).execute();
     }
 
-    public LiveData<List<Medicine>> getAllMedicines () {return allMedicines; }
+    public Medicine getMedicineById (int id) {
+        return medicineDao.getMedicineById(id);
+    }
+
 
 }

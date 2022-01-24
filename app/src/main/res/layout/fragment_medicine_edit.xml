@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.medicineEdit.MedicineEditFragment"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/input_medicine_edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/input_medicine_edit_validity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:ems="10"
+        android:hint="@string/validity"
+        android:inputType="textPersonName"  />
+
+    <EditText
+        android:id="@+id/input_medicine_edit_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:ems="10"
+        android:hint="@string/quantity"
+        android:inputType="numberSigned" />
+
+    <EditText
+        android:id="@+id/input_medicine_edit_unity_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:ems="10"
+        android:hint="@string/price"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/button_medicine_edit_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="@string/save" />
+
+    <Button
+        android:id="@+id/button_medicine_edit_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="@string/cancel" />
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.medmanager.ui.home;
+package com.example.medmanager.viewModels;
 
 import android.app.Application;
 import android.content.Context;

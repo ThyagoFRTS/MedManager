@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_home_to_medicine_register"
             app:destination="@id/nav_medicine_register" />
+        <action
+            android:id="@+id/action_nav_home_to_medicineEditFragment"
+            app:destination="@id/nav_medicine_edit" />
     </fragment>
 
     <fragment
@@ -25,7 +28,19 @@
             app:destination="@id/nav_home" />
         <argument
             android:name="isNewMedicine"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_medicine_edit"
+        android:name="com.example.medmanager.ui.medicineEdit.MedicineEditFragment"
+        android:label="@string/menu_medicine_edit"
+        tools:layout="@layout/fragment_medicine_edit" >
+        <action
+            android:id="@+id/action_nav_medicine_edit_to_nav_home"
+            app:destination="@id/nav_home" />
+        <argument
+            android:name="currentMedicine"
+            app:argType="com.example.medmanager.models.Medicine" />
     </fragment>
 </navigation>
