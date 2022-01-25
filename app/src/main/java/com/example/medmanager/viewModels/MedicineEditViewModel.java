@@ -28,7 +28,6 @@ public class MedicineEditViewModel extends AndroidViewModel {
         currentItem.setValidity(this.validity);
         currentItem.setQuantity(Integer.parseInt(this.quantity));
         currentItem.setUnityPrice(Double.parseDouble(this.unity_price));
-        System.out.println("======================="+currentItem.toString());
         this.repository.update(currentItem);
     }
 

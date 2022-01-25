@@ -24,8 +24,8 @@ public class MedicineRepository {
         private final MedicineDao medicineDao;
         InsertAsyncMedicine(MedicineDao dao){ this.medicineDao = dao; }
         @Override
-        protected Void doInBackground(final Medicine... medicines) {
-            medicineDao.insertMedicine(medicines[0]);
+        protected Void doInBackground(final Medicine... medicine) {
+            medicineDao.insertMedicine(medicine[0]);
             return null;
         }
     }
@@ -34,8 +34,8 @@ public class MedicineRepository {
         private final MedicineDao medicineDao;
         UpdateAsyncMedicine(MedicineDao dao){ this.medicineDao = dao; }
         @Override
-        protected Void doInBackground(final Medicine... medicines) {
-            medicineDao.updateMedicine(medicines[0]);
+        protected Void doInBackground(final Medicine... medicine) {
+            medicineDao.updateMedicine(medicine[0]);
             return null;
         }
     }
@@ -44,8 +44,8 @@ public class MedicineRepository {
         private final MedicineDao medicineDao;
         DeleteAsyncMedicine(MedicineDao dao){ this.medicineDao = dao; }
         @Override
-        protected Void doInBackground(final Medicine... medicines) {
-            medicineDao.deleteMedicine(medicines[0]);
+        protected Void doInBackground(final Medicine... medicine) {
+            medicineDao.deleteMedicine(medicine[0]);
             return null;
         }
     }
@@ -78,9 +78,7 @@ public class MedicineRepository {
         new DeleteAllAsyncMedicine(medicineDao).execute();
     }
 
-    public Medicine getMedicineById (int id) {
-        return medicineDao.getMedicineById(id);
-    }
+
 
 
 }

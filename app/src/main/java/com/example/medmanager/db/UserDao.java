@@ -12,7 +12,7 @@ import java.util.List;
 @Dao
 public interface UserDao {
     @Query("SELECT * FROM users ORDER BY UPPER(name) ASC")
-    LiveData<List<User>> allMedicines();
+    LiveData<List<User>> allUsers();
 
     @Query("SELECT * FROM users WHERE name LIKE :search")
     LiveData<List<User>> findMedicinesByPattern(String search);

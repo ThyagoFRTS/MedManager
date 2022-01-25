@@ -16,17 +16,11 @@ public class HomeViewModel extends AndroidViewModel {
     public HomeViewModel(@NonNull Application application) {
         super(application);
         MedicineRepository repository = new MedicineRepository(application);
-        //data = _data;
         data = repository.getAllMedicines();
 
-
     }
-
-
 
     public LiveData<List<Medicine>> getAllMedicines() {
         return this.data;
     }
-
-
 }

@@ -43,4 +43,25 @@
             android:name="currentMedicine"
             app:argType="com.example.medmanager.models.Medicine" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.medmanager.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_login_to_nav_singin"
+            app:destination="@id/nav_singin" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_singin"
+        android:name="com.example.medmanager.ui.singin.SinginFragment"
+        android:label="fragment_singin"
+        tools:layout="@layout/fragment_singin" >
+        <action
+            android:id="@+id/action_nav_singin_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>

@@ -22,5 +22,11 @@
     <string name="quantity">Quantity</string>
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
+    <string name="login">Login</string>
+    <string name="singin">Sing In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirmpass">Confirm Password</string>
+    <string name="register">Register</string>
 
 </resources>
