@@ -18,7 +18,11 @@ public interface UserDao {
     LiveData<List<User>> findMedicinesByPattern(String search);
 
     @Query("SELECT * FROM users WHERE userId = :uid")
-    LiveData<User> getUserById(String uid);
+    User getUserById(int uid);
+
+
+    @Query("SELECT * FROM users WHERE email LIKE :uEmail AND password LIKE :uPass")
+    User getUserByEmail(String uEmail, String uPass);
 
     @Insert
     void insertUser(User user);

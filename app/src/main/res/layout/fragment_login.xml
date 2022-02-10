@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".ui.login.LoginFragment">
 
     <EditText
@@ -23,7 +23,7 @@
         android:layout_marginVertical="8dp"
         android:ems="10"
         android:hint="@string/password"
-        android:inputType="textPassword"  />
+        android:inputType="textPassword" />
 
 
     <Button
@@ -40,6 +40,11 @@
         android:layout_marginVertical="8dp"
         android:text="@string/singin" />
 
+    <TextView
+        android:id="@+id/tosee2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
 
 </LinearLayout>

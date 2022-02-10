@@ -3,18 +3,34 @@ package com.example.medmanager.repository;
 import android.app.Application;
 import android.os.AsyncTask;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.medmanager.db.DbRoomDatabase;
+import com.example.medmanager.db.MedicineDao;
 import com.example.medmanager.db.UserDao;
+import com.example.medmanager.models.Medicine;
 import com.example.medmanager.models.User;
+
+import java.util.List;
 
 public class UserRepository {
     private UserDao userDao;
-    private User user;
+    private MedicineDao medicineDao;
+    private LiveData<User> userByEmail;
+    private final LiveData<List<User>> allUsers;
+    private final LiveData<List<Medicine>> allMedicines;
 
     public  UserRepository (Application application){
         DbRoomDatabase dbRoomDatabase = DbRoomDatabase.getDatabase(application);
         userDao = dbRoomDatabase.userDao();
+        medicineDao = dbRoomDatabase.medicineDao();
+        allUsers = dbRoomDatabase.userDao().allUsers();
+        allMedicines = dbRoomDatabase.medicineDao().getAllMedicines();
 
+    }
+
+    public LiveData<List<Medicine>> getAllMedicines() {
+        return  allMedicines;
     }
 
     private static class InsertAsyncUser extends AsyncTask<User, Void, Void> {
@@ -47,14 +63,31 @@ public class UserRepository {
         }
     }
 
-    private static class GetAsyncUserById extends AsyncTask<String, Void, Void> {
+    /*
+    private static class GetAsyncUserById extends AsyncTask<String, Void, User> {
         private final UserDao userDao;
         GetAsyncUserById(UserDao dao){ this.userDao = dao; }
         @Override
-        protected Void doInBackground(final String... uid) {
-            userDao.getUserById(uid[0]);
+        protected User doInBackground(final String... uid) {
+            //userDao.getUserById(uid[0]);
+            return userDao.getUserById(uid[0]);
+        }
+    }
+
+    private static class GetAsyncUserByEmail extends AsyncTask<String, Void, Void> {
+        private final UserDao userDao;
+        GetAsyncUserByEmail(UserDao dao){ this.userDao = dao; }
+        @Override
+        protected Void doInBackground(final String... uemail) {
+            userDao.getUserByEmail(uemail[0]);
             return null;
         }
+    }
+
+     */
+
+    public LiveData<List<User>> getAllUsers() {
+        return allUsers;
     }
 
     public void insert(User user){
@@ -69,8 +102,12 @@ public class UserRepository {
         new DeleteAsyncUser(userDao).execute(user);
     }
 
-    public void getItemById(String uid){
-        new GetAsyncUserById(userDao).execute(uid);
+    public User getUserById(int uid){
+        return userDao.getUserById(uid);
+    }
+
+    public User getUserByEmail(String email, String pass){
+        return userDao.getUserByEmail(email, pass);
     }
 
 

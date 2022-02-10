@@ -13,7 +13,7 @@ import com.example.medmanager.models.Medicine;
 import com.example.medmanager.models.User;
 import com.example.medmanager.staticData.Data;
 
-@Database(entities = {Medicine.class, User.class}, version = 1, exportSchema = false)
+@Database(entities = {Medicine.class, User.class}, version = 1, exportSchema = true)
 public  abstract class DbRoomDatabase extends RoomDatabase {
     public abstract MedicineDao medicineDao();
     public abstract UserDao userDao();

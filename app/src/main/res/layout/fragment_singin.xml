@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".ui.singin.SinginFragment">
 
@@ -12,6 +12,7 @@
         android:id="@+id/input_singin_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName" />
@@ -31,7 +32,7 @@
         android:layout_marginVertical="8dp"
         android:ems="10"
         android:hint="@string/password"
-        android:inputType="textPassword"  />
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/input_singin_confirmpass"
@@ -40,7 +41,7 @@
         android:layout_marginVertical="8dp"
         android:ems="10"
         android:hint="@string/confirmpass"
-        android:inputType="textPassword"  />
+        android:inputType="textPassword" />
 
 
     <Button
@@ -56,5 +57,11 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
         android:text="@string/cancel" />
+
+    <TextView
+        android:id="@+id/tosee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
 </LinearLayout>

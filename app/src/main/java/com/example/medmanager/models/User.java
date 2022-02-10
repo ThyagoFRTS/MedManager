@@ -35,6 +35,16 @@ public class User implements Parcelable {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
     protected User(Parcel in) {
         id = in.readInt();
         name = in.readString();
